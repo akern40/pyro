@@ -68,7 +68,7 @@ class Permute(Transform):
         the base distribution (or the output of a previous transform)
         """
 
-        return x[..., self.permutation]
+        return x.permute(self.permutation)
 
     def _inverse(self, y):
         """
@@ -78,7 +78,7 @@ class Permute(Transform):
         Inverts y => x.
         """
 
-        return y[..., self.inv_permutation]
+        return y.permute(self.inv_permutation)
 
     def log_abs_det_jacobian(self, x, y):
         """
